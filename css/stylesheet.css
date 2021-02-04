@@ -1,0 +1,85 @@
+body {
+	background-image: url('../img/xfilesface copy.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: sans-serif;
+	text-align: center;
+	color: #9cf945;
+	background-color: black;
+}
+.green{
+	color: #995bd5;
+	font-weight: bold;
+}
+h1 {
+	font-size: 4em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+input {
+	font-size: 72px;
+	max-width: 100%;
+	border: none;
+	border-radius: 10px;
+	background-color: #black;
+	text-align: center;
+}
+
+input:focus {
+	outline: none;
+}
+
+button {
+	display: block;
+	cursor: pointer;
+	width: 200px;
+	height: 120px;
+	color: white;
+	font-size: 22px;
+	border: 6px solid black;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+p {
+	text-align: center;
+	font-size: 22px;
+}
+
+p span {
+	font-size: 96px;
+}
+
+.container {
+	margin: 0 auto;
+	width: 420px;
+}
+
+.controls {
+	position: relative;
+	margin: 0 auto;
+	width: 270px;
+}
+
+.hide {
+	display: none; /* default value that is changed via javascript */
+}
+
+#response {
+	color: #FF6666;
+}
+
+#start {
+	background-color: #ff00ea;
+	border-color: #995bd5;
+}
+
+#stop {
+	background-color: #ff00ea;
+	border-color: #995bd5;
+	margin-top: 40px;
+}
