@@ -10,6 +10,9 @@ const response = document.getElementById("response"); // used for Try Again text
 const results = document.getElementById("results");
 const category = document.getElementById("category");
 const timeData = document.querySelector('[data-time=timer]');
+const levelData = document.querySelector('[data-level=level]');
+
+
 
 /***** STATE VARIABLES *****/
 let max = 5;
@@ -21,6 +24,17 @@ let startTime;
 let endTime;
 let currTime;
 let gameTime;
+const pics = [`url(img/paranormal.jpg)`,
+							`url(img/xfilesface copy.jpg)`,
+							`url(img/dadu.jpeg)`,
+							`url(img/fumata.jpeg)`,
+							`url(img/government.jpg)`,
+							`url(img/hand.jpeg)`,
+							`url(img/infor.jpeg)`,
+							`url(img/TTIOT.jpeg)`,
+							`url(img/ED.jpeg)`,
+							`url(img/gilA.jpeg)`
+						]
 
 let count; // number of correct answers
 let times = [];
@@ -52,7 +66,8 @@ form.onsubmit = function(e) {
 
 
 stopButton.onclick = function() {
-
+	const len = pics.length;
+	document.body.style.backgroundImage= pics[Math.floor(Math.random() * len)];
 	var resultString;
 	var categoryString;
 	if (times.length > 0) {
@@ -63,8 +78,8 @@ stopButton.onclick = function() {
 		}
 		var mean = (total / times.length) / 1000;
 		resultString = "Average time: " + mean.toPrecision(4) + " sec";
-		categoryString = getCategory(mean)[0];
-		newMax = getCategory(mean)[1];
+		categoryString = getCategory(mean,newMax)[0];
+		newMax = getCategory(mean,newMax)[1];
 	} else {
 		resultString = "No results recorded. Hit the Enter key to submit your answers.";
 		categoryString = "";
@@ -96,6 +111,8 @@ var refreshNums = function() {
 	q.innerHTML = num2;
 	// Starting timer
 	startTime = new Date();
+
+	levelData.innerText = `level: ${newMax - 4}`;
 };
 
 /*
@@ -123,25 +140,25 @@ var getAnswer = function() {
 	inputField.value = "";
 };
 
-var getCategory = function(mean) {
+var getCategory = function(mean,maxi) {
 	var c;
 	if (mean < 2) {
-			max += 3;
+			maxi += 2;
 		c = "Human Computer";
 	} else if (mean < 4) {
-		max += 2
+		maxi += 1
 		c = "Math Wiz";
-	} else if (mean < 7) {
+	} else if (mean < 6) {
 		c = "B Student";
-		max++;
 	} else if (mean < 7.5){
 		c = "C+ student";
+		maxi -= 1;
 	} else if (mean < 10) {
-		max -= 1
+		maxi -= 2;
 		c = "Probably Drunk";
 	} else {
-		max -=2
+		maxi -= 3;
 		c = "High School Drop Out";
 	}
-	return [c,max];
+	return [c,maxi];
 };
