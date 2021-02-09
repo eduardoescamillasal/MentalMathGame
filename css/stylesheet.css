@@ -1,11 +1,28 @@
 body {
-	background-image: url('../img/xfilesface copy.jpg');
-	background-repeat: no-repeat;
+	background: radial-gradient(circle,black,white);
+	background-image: url('../img/xfilesface copy.jpg'), url('../img/government.jpg');
+	background-repeat: ®repeat;
 	background-position: center;
 	font-family: sans-serif;
 	text-align: center;
 	color: #9cf945;
 	background-color: black;
+	display: flex
+
+}
+
+.container {
+
+  /* can be treated like a fallback */
+  background-color: black;
+
+  /* will be "on top", if browser supports it */
+  background-image: linear-gradient(circle,black, white);
+
+  /* these will reset other properties, like background-position, but it does know what you mean */
+  background: black;
+  background: linear-gradient(circle,black, white);
+
 }
 .green{
 	color: #995bd5;
@@ -13,10 +30,12 @@ body {
 }
 h1 {
 	font-size: 4em;
+	justify-content: center;
 }
 
 h2 {
 	font-size: 2em;
+	justify-content: center;
 }
 
 input {
@@ -26,17 +45,24 @@ input {
 	border-radius: 10px;
 	background-color: #black;
 	text-align: center;
+	outline: none;
+	background-color: #101010;
+	outline-width: thin;
+	color: rgba(165,89,165,0.8);
 }
 
 input:focus {
 	outline: none;
+	background-color: #101010;
+	outline-width: thin;
+	color: rgba(165,89,165,0.8);
 }
 
 button {
 	display: block;
 	cursor: pointer;
-	width: 200px;
-	height: 120px;
+	width: 150px;
+	height: 90px;
 	color: white;
 	font-size: 22px;
 	border: 6px solid black;
@@ -83,4 +109,10 @@ p span {
 	background-color: #ff00ea;
 	border-color: #995bd5;
 	margin-top: 40px;
+}
+
+.texto {
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #3F5Ff2;
 }

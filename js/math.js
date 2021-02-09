@@ -112,7 +112,7 @@ var refreshNums = function() {
 	// Starting timer
 	startTime = new Date();
 
-	levelData.innerText = `level: ${newMax - 4}`;
+	levelData.innerText = `Level: ${newMax - 4}`;
 };
 
 /*
@@ -124,8 +124,10 @@ var getAnswer = function() {
 	answer = parseInt(inputField.value);
 	currTime = new Date();
 	timeData.innerHTML = `<h3>Time elapsed: </h3>`;
-	let timeText = (currTime.getTime() - gameTime.getTime())  / (1000 * 60);
-	timeData.innerHTML = `<h3>Time elapsed: ${timeText.toPrecision(3)} minutes.</h3>`;
+	let timeLapse = currTime.getTime() - gameTime.getTime()
+	let timeMin = Math.floor(timeLapse / (1000* 60));
+	let timeSec = timeLapse %(1000*60)/1000;
+	timeData.innerHTML = `<h3>Time elapsed: ${timeMin} min ${timeSec} sec</h3>`;
 	if (answer === correct) {
 		// Stopping the timer and adding the time to the times array
 		endTime = new Date();
@@ -144,21 +146,21 @@ var getCategory = function(mean,maxi) {
 	var c;
 	if (mean < 2) {
 			maxi += 2;
-		c = "Human Computer";
+		c = "You Belong to an X-file";
 	} else if (mean < 4) {
 		maxi += 1
-		c = "Math Wiz";
+		c = "Fast calculator";
 	} else if (mean < 6) {
-		c = "B Student";
+		c = "B Student ";
 	} else if (mean < 7.5){
-		c = "C+ student";
+		c = "C+ student / Average human specimen.";
 		maxi -= 1;
 	} else if (mean < 10) {
 		maxi -= 2;
 		c = "Probably Drunk";
 	} else {
 		maxi -= 3;
-		c = "High School Drop Out";
+		c = "High School Drop Out, quit marihuana";
 	}
 	return [c,maxi];
 };
