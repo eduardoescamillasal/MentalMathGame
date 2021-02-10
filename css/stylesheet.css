@@ -24,6 +24,15 @@ body {
   background: linear-gradient(circle,black, white);
 
 }
+
+.left {
+	opacity: 50%;
+}
+
+.right {
+	opacity: 50%;
+
+}
 .green{
 	color: #995bd5;
 	font-weight: bold;
@@ -109,6 +118,13 @@ p span {
 	background-color: #ff00ea;
 	border-color: #995bd5;
 	margin-top: 40px;
+}
+.data {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: sans-serif;
+	font-weight: bold;
 }
 
 .texto {

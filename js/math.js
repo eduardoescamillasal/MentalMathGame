@@ -164,3 +164,5 @@ var getCategory = function(mean,maxi) {
 	}
 	return [c,maxi];
 };
+
+startButton.addEventListener('mouseenter', stopButton.onclick)
