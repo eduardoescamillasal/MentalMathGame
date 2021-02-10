@@ -11,7 +11,7 @@ const results = document.getElementById("results");
 const category = document.getElementById("category");
 const timeData = document.querySelector('[data-time=timer]');
 const levelData = document.querySelector('[data-level=level]');
-
+const userStat = document.querySelector('.statList');
 
 
 /***** STATE VARIABLES *****/
@@ -38,6 +38,7 @@ const pics = [`url(img/paranormal.jpg)`,
 
 let count; // number of correct answers
 let times = [];
+let userList= [];
 
 /***** INITIALIZING *****/
 inputField.className = "hide";
@@ -78,8 +79,10 @@ stopButton.onclick = function() {
 		}
 		var mean = (total / times.length) / 1000;
 		resultString = "Average time: " + mean.toPrecision(4) + " sec";
-		categoryString = getCategory(mean,newMax)[0];
-		newMax = getCategory(mean,newMax)[1];
+	[categoryString, newMax] = getCategory(mean,newMax);
+	let item = {'mean': mean, 'level':newMax };
+	userList.push(item);
+	populateList(userList, userStat);
 	} else {
 		resultString = "No results recorded. Hit the Enter key to submit your answers.";
 		categoryString = "";
@@ -101,8 +104,7 @@ stopButton.onclick = function() {
 /***** FUNCTIONS ******/
 var refreshNums = function() {
 	// Getting some random numbers
-	const primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
-	console.log(max);
+	const primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
 	num1 = primes[Math.floor((Math.random() * newMax))];
 	num2 = primes[Math.floor((Math.random() * newMax))];
 	// Printing numbers to user
@@ -142,8 +144,19 @@ var getAnswer = function() {
 	inputField.value = "";
 };
 
+function populateList(userList=[], userStat){
+	userStat.innerHTML = userList.map((item,i) => {
+		return `
+			<li>
+				Level: ${item.level}, Ave: ${item.mean}
+			</li>
+		`;
+	})
+}
+
 var getCategory = function(mean,maxi) {
 	var c;
+	console.log(maxi)
 	if (mean < 2) {
 			maxi += 2;
 		c = "You Belong to an X-file";
@@ -165,4 +178,4 @@ var getCategory = function(mean,maxi) {
 	return [c,maxi];
 };
 
-startButton.addEventListener('mouseenter', stopButton.onclick)
+//stopButton.addEventListener('mouseenter', stopButton.onclick)
