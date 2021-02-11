@@ -26,12 +26,28 @@ body {
 }
 
 .left {
-	opacity: 50%;
+	display: grid;
+	opacity: 80%;
+
+}
+
+.conspTitle {
+	color: #8a2be2;
+
+}
+
+.conspContent{
+	color: #7fff00;
+	font-family: courier;
+	font-size: 12px;
 }
 
 .right {
-	opacity: 50%;
+	opacity: 80%;
 
+}
+.statList {
+	justify-content: left;
 }
 .green{
 	color: #995bd5;
